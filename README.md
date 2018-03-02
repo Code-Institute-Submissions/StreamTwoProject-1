@@ -19,6 +19,8 @@ For my Stream Two Project, I chose to use the supplied brief as outlined below:
 	* Queue.js
 	* Keen.js
 	* JQuery
+* Python
+	* Flask
 
 ## Testing
 
