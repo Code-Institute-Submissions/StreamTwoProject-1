@@ -96,9 +96,13 @@ function buildGraphs(error, donorMAProjects) {
 	var barNumDonors = dc.barChart('#bar-number-donors');
 	var rowNumDonorsCounty = dc.rowChart('#row-donors-by-county');
 
+	// get width of container objects to set width of graphs
+	var widthBarNumDonors = $('#chart1').width();
+	var widthRowNumDonorsCounty = $('#chart2').width();
+
 	// build the charts.
 	barNumDonors
-		.width(1170)
+		.width(widthBarNumDonors)
 		.height(500)
 		.margins({top: 20, right: 20, bottom: 50, left: 70})
 		.colors(d3.scale.category20c())
@@ -115,7 +119,7 @@ function buildGraphs(error, donorMAProjects) {
 		.yAxis().ticks(10);
 	
 	rowNumDonorsCounty
-		.width(400)
+		.width(widthRowNumDonorsCounty)
 		.height(500)
 		.margins({top: 20, right: 20, bottom: 20, left: 20})
 		.colors(d3.scale.category20c())
@@ -127,5 +131,19 @@ function buildGraphs(error, donorMAProjects) {
 
 	// render the charts and filters
 	dc.renderAll();
+
+	// on window resize
+	window.onresize = function(event) {
+		var newWidthBarNumDonors = $('#chart1').width();
+		var newWidthRowNumDonorsCounty = $('#chart2').width();
+		
+		barNumDonors
+			.width(newWidthBarNumDonors);
+	  	
+	  	rowNumDonorsCounty
+	  		.width(newWidthRowNumDonorsCounty);
+
+	  	dc.renderAll();
+	};
 }
 
