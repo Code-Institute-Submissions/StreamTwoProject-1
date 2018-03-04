@@ -26,7 +26,8 @@ function startHelpGuide() {
 			// step 3
 			{
 				element: '#charts',
-				intro: "<h3>Charts</h3>This section of the website contains various charts, showing the donations made to various eductaion projects between 2007 and 2016. All the charts in this section are <b>interactive</b>."
+				intro: "<h3>Charts</h3>This section of the website contains various charts, showing the donations made to various eductaion projects between 2007 and 2016. All the charts in this section are <b>interactive</b>.",
+				poistion: 'auto'
 			},
 
 			// step 4
