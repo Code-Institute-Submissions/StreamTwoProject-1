@@ -68,22 +68,21 @@ function buildGraphs(error, donorMAProjects) {
 		return d["total_donations"];
 	});
 
+	// funding status dimension.
+	var fundingStatusDim = ndx.dimension(function(d) {
+		return d["funding_status"];
+	})
+
 	// get values to set axis
 	var minYear = yearDim.bottom(1)[0]["date_posted"];
 	var maxYear = yearDim.top(1)[0]["date_posted"];
 
 	// calculate metrics.
-	var yearGroup = yearDim.group();
 	var countyGroup = schoolCountyDim.group();
 	var focusGroup = primaryFocusDim.group();
 	var resourceGroup = resourceTypeDim.group();
+	var fundingStatusGroup = fundingStatusDim.group();
 
-	var numDonorsByDate = dateDim.group().reduceSum(function(d) {
-		return d["num_donors"];
-	});
-	var numDonorsByYear = yearDim.group().reduceSum(function(d) {
-		return d["num_donors"];
-	});
 	var totalDonationsByDate = dateDim.group().reduceSum(function(d) {
 		return d["total_donations"];
 	});
@@ -93,16 +92,24 @@ function buildGraphs(error, donorMAProjects) {
 	var all = ndx.groupAll();
 
 	// define charts.
-	var barNumDonors = dc.barChart('#bar-number-donors');
+	var lineTotalDonoationYear = dc.lineChart('#line-total-donoation-by-year');
 	var rowNumDonorsCounty = dc.rowChart('#row-donors-by-county');
+	var rowProjectsByFocusArea = dc.rowChart('#row-projects-by-focus-area');
+	var pieFundingStatus = dc.pieChart('#pie-funding-status');
 
 	// get width of container objects to set width of graphs
-	var widthBarNumDonors = $('#chart1').width();
-	var widthRowNumDonorsCounty = $('#chart2').width();
+	var widthChart1 = $('#chart1').width();
+	var widthChart2 = $('#chart2').width();
+	var widthChart3 = $('#chart3').width();
+	var widthChart4 = $('#chart4').width();
 
 	// build the charts.
-	barNumDonors
-		.width(widthBarNumDonors)
+	/*!
+	 * Chart 1
+	 * Bar Chart showing the total donations by year.
+	 */
+	lineTotalDonoationYear
+		.width(widthChart1)
 		.height(500)
 		.margins({top: 20, right: 20, bottom: 50, left: 70})
 		.colors(d3.scale.category20c())
@@ -114,12 +121,17 @@ function buildGraphs(error, donorMAProjects) {
 		.elasticY(true)
 		.elasticX(true)
 		.brushOn(true)
+		.renderArea(true)
 		.xAxisLabel("Date of Donation")
 		.yAxisLabel("Total Donations in $")
 		.yAxis().ticks(10);
 	
+	/*!
+	 * Chart 2
+	 * Row Chart showing the number of donors by shcool county
+	 */
 	rowNumDonorsCounty
-		.width(widthRowNumDonorsCounty)
+		.width(widthChart2)
 		.height(500)
 		.margins({top: 20, right: 20, bottom: 20, left: 20})
 		.colors(d3.scale.category20c())
@@ -128,20 +140,58 @@ function buildGraphs(error, donorMAProjects) {
 		.group(numDonorsByCounty)
 		.xAxis().ticks(5);
 
+	/*!
+	 * Chart 3
+	 * Row Chart showing the number of projects by Focus area
+	 */
+	rowProjectsByFocusArea
+		.width(widthChart3)
+		.height(widthChart3)
+		.margins({top: 20, right: 20, bottom: 20, left: 20})
+		.colors(d3.scale.category20c())
+		.transitionDuration(500)
+		.dimension(primaryFocusDim)
+		.group(focusGroup)
+		.xAxis().ticks(5);
+
+	/*!
+	 * Chart 4
+	 * Pie Chart showing the funding status of the projects
+	 */
+	pieFundingStatus
+		.width(widthChart4)
+		.height(widthChart4)
+		.colors(d3.scale.category20c())
+		.transitionDuration(500)
+		.radius(widthChart4 - 40)
+		.dimension(fundingStatusDim)
+		.group(fundingStatusGroup);
+
+
 
 	// render the charts and filters
 	dc.renderAll();
 
 	// on window resize
 	window.onresize = function(event) {
-		var newWidthBarNumDonors = $('#chart1').width();
-		var newWidthRowNumDonorsCounty = $('#chart2').width();
+		var newWidthChart1 = $('#chart1').width();
+		var newWidthChart2 = $('#chart2').width();
+		var newWidthChart3 = $('#chart3').width();
+		var newWidthChart4 = $('#chart4').width();
 		
-		barNumDonors
-			.width(newWidthBarNumDonors);
+		lineTotalDonoationYear
+			.width(newWidthChart1);
 	  	
 	  	rowNumDonorsCounty
-	  		.width(newWidthRowNumDonorsCounty);
+	  		.width(newWidthChart2);
+
+	  	rowProjectsByFocusArea
+	  		.width(newWidthChart3);
+
+	  	pieFundingStatus
+	  		.width(newWidthChart4)
+	  		.height(newWidthChart4)
+	  		.radius(newWidthChart4 - 40);
 
 	  	dc.renderAll();
 	};
