@@ -46,7 +46,7 @@ def get_donor_data():
 		'primary_focus_area': True,
 		
 		# school fields
-		'grade_level' : True, 'school_city': True, 'school_county': True,
+		'grade_level' : True, 'school_county': True,
 
 		# project details
 		'resource_type': True, 'poverty_level': True, 'num_donors': True, 
