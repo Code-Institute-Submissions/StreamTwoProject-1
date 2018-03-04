@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/theme.css') }}" />
 </head>
-<body data-spy="scroll" data-target="#navbar">
+<body data-spy="scroll" data-target="#navbar" data-offset="50">
 	<header>
 		<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
@@ -24,21 +24,21 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand"><i class="fas fa-graduation-cap"></i> MA School Donations</a>
+					<a href="/" class="navbar-brand"><i class="fas fa-graduation-cap"></i></a>
 				</div>
 				<div class="collapse navbar-collapse" id="main-menu">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="#welcome">Welcome</a>
+							<a href="#welcome"><i class="fas fa-briefcase fa-fw"></i> Welcome</a>
 						</li>
 						<li>
-							<a href="#charts"><i class="fas fa-chart-pie"></i> Charts</a>
+							<a href="#charts"><i class="fas fa-chart-pie fa-fw"></i> Charts</a>
 						</li>
 						<li>
-							<a href="#aim"><i class="fas fa-target"></i> Our Aim</a>
+							<a href="#aim"><i class="fas fa-bullseye fa-fw"></i> Our Aim</a>
 						</li>
 						<li>
-							<a href="#how-help"><i class="fas fa-target"></i> How You Can Help</a>
+							<a href="#how-help"><i class="fas fa-bullhorn fa-fw"></i> How You Can Help</a>
 						</li>
 						<li id="reset-filter" data-toggle="tooltip" data-placement="bottom" title="Restore the charts to their default state.">
 							<a href="javascript:dc.filterAll(); dc.renderAll();"><i class="fas fa-redo"></i></a>
@@ -48,20 +48,29 @@
 						</li>
 					</ul>
 				</div>
-            	
 			</div>
 		</nav>
 	</header>
 	<main>
-		<div class="container" id="welcome">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<section>
-						
-					</section>
+		<section id="welcome">
+			<div class="container-fluid header-bkg">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<header>
+							<h1>School Donations for the State of Massachusetts</h1>
+						</header>
+					</div>
 				</div>
 			</div>
-		</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		
 		<section id="charts">
 			<div class="container">
 				<div class="row">

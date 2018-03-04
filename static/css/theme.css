@@ -1,11 +1,40 @@
 /* HTML Elements */
 body { 
-	padding-top: 70px;
 	font-family: 'Ovo', serif;
 	font-size: 20px;
 	line-height: 26px;
 	position: relative;
 }
+h1 { 
+	font-size: 80px; 
+	text-align: center;
+	font-weight: bolder;
+	color: #fff;
+	text-shadow: 2px 2px 2px #000;
+}
+nav {
+	z-index: 9999999 !important;
+	font-size: 16px;
+}
+a {
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	text-decoration: none;
+}
+
+/* Nav bar */
+.navbar-inverse .navbar-nav > li > a:hover, 
+.navbar-inverse .navbar-brand:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+.navbar-brand {
+	padding: 12px 12px;
+	font-size: 28px;
+}
+
 
 /* Footer */
 footer {
@@ -20,7 +49,7 @@ footer a { color: #777; }
 	padding-bottom: 90px;
 }
 .copyright {
-	background-color: #333;
+	background-color: #3d4a57;
 	padding: 20px 0;
 	color: #fff;
 	font-size: 14px;
@@ -45,4 +74,15 @@ footer a { color: #777; }
 
 .y-axis-label, .x-axis-label {
 	font-size: 14px;
+}
+
+/* Page Header */
+.header-bkg {
+	background-image: url(/static/images/massachusetts-state-house-bkg.jpg);
+	background-position: bottom center;
+	background-attachment: fixed;
+	background-size: cover;
+	padding-top: 150px;
+	padding-bottom: 100px;
+	margin-bottom: 50px;
 }
