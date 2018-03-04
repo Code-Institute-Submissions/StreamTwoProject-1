@@ -6,6 +6,13 @@ queue()
 	.await(buildGraphs);
 
 /*!
+ * initialise bootstrap tooltips
+ */
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+/*!
  * This function uses the data gathered from the database to build the website dashboard.
  * The data is used to produce a crossfilter enabled graph system.
  */
@@ -31,6 +38,7 @@ function buildGraphs(error, donorMAProjects) {
 
 	// create a crossfilter instance.
 	var ndx = crossfilter(donorMAProjects);
+	var all = ndx.groupAll();
 
 	// define the dimensions:
 	// yearly dimension.
@@ -71,7 +79,12 @@ function buildGraphs(error, donorMAProjects) {
 	// funding status dimension.
 	var fundingStatusDim = ndx.dimension(function(d) {
 		return d["funding_status"];
-	})
+	});
+
+	// grade dimemson.
+	var gradeDim = ndx.dimension(function(d) {
+		return d["grade_level"];
+	});
 
 	// get values to set axis
 	var minYear = yearDim.bottom(1)[0]["date_posted"];
@@ -82,6 +95,7 @@ function buildGraphs(error, donorMAProjects) {
 	var focusGroup = primaryFocusDim.group();
 	var resourceGroup = resourceTypeDim.group();
 	var fundingStatusGroup = fundingStatusDim.group();
+	var gradeGroup = gradeDim.group();
 
 	var totalDonationsByDate = dateDim.group().reduceSum(function(d) {
 		return d["total_donations"];
@@ -89,29 +103,31 @@ function buildGraphs(error, donorMAProjects) {
 	var numDonorsByCounty = schoolCountyDim.group().reduceSum(function(d) {
 		return d["num_donors"];
 	});
-	var all = ndx.groupAll();
 
 	// define charts.
 	var lineTotalDonoationYear = dc.lineChart('#line-total-donoation-by-year');
 	var rowNumDonorsCounty = dc.rowChart('#row-donors-by-county');
 	var rowProjectsByFocusArea = dc.rowChart('#row-projects-by-focus-area');
 	var pieFundingStatus = dc.pieChart('#pie-funding-status');
+	var rowProjectsByGrade = dc.rowChart("#row-projects-by-grade");
 
 	// get width of container objects to set width of graphs
 	var widthChart1 = $('#chart1').width();
 	var widthChart2 = $('#chart2').width();
 	var widthChart3 = $('#chart3').width();
 	var widthChart4 = $('#chart4').width();
+	var widthChart5 = $('#chart5').width();
 
-	// build the charts.
 	/*!
+	 * Build the charts
+	 *
 	 * Chart 1
-	 * Bar Chart showing the total donations by year.
+	 * Line Chart showing the total donations by year.
 	 */
 	lineTotalDonoationYear
 		.width(widthChart1)
 		.height(500)
-		.margins({top: 20, right: 20, bottom: 50, left: 70})
+		.margins({top: 20, right: 20, bottom: 50, left: 60})
 		.colors(d3.scale.category20c())
 		.dimension(dateDim)
 		.group(totalDonationsByDate)
@@ -124,6 +140,9 @@ function buildGraphs(error, donorMAProjects) {
 		.renderArea(true)
 		.xAxisLabel("Date of Donation")
 		.yAxisLabel("Total Donations in $")
+		.renderHorizontalGridLines(true)
+		.dotRadius(2)
+		.renderDataPoints({radius: 2, fillOpacity: 0.8, strokeOpacity: 0.8})
 		.yAxis().ticks(10);
 	
 	/*!
@@ -167,17 +186,36 @@ function buildGraphs(error, donorMAProjects) {
 		.dimension(fundingStatusDim)
 		.group(fundingStatusGroup);
 
+	/*!
+	 * Chart 5
+	 * Row Chart showing the number of projects by school grade
+	 */
+	rowProjectsByGrade
+		.width(widthChart5)
+		.height(widthChart5)
+		.margins({top: 20, right: 20, bottom: 20, left: 20})
+		.colors(d3.scale.category20c())
+		.dimension(gradeDim)
+		.group(gradeGroup)
+		.transitionDuration(500)
+		.xAxis().ticks(5);
+
 
 
 	// render the charts and filters
 	dc.renderAll();
 
-	// on window resize
+	/*!
+	 * window onResize
+	 * Evaluates the width of each chart container and sets the new width of each chart
+	 * when ever the browser window is resized.
+	 */
 	window.onresize = function(event) {
 		var newWidthChart1 = $('#chart1').width();
 		var newWidthChart2 = $('#chart2').width();
 		var newWidthChart3 = $('#chart3').width();
 		var newWidthChart4 = $('#chart4').width();
+		var newWidthChart5 = $('#chart5').width();
 		
 		lineTotalDonoationYear
 			.width(newWidthChart1);
@@ -186,12 +224,17 @@ function buildGraphs(error, donorMAProjects) {
 	  		.width(newWidthChart2);
 
 	  	rowProjectsByFocusArea
-	  		.width(newWidthChart3);
+	  		.width(newWidthChart3)
+	  		.height(newWidthChart3);
 
 	  	pieFundingStatus
 	  		.width(newWidthChart4)
 	  		.height(newWidthChart4)
 	  		.radius(newWidthChart4 - 40);
+
+	  	rowProjectsByGrade
+	  		.width(newWidthChart5)
+	  		.height(newWidthChart5);
 
 	  	dc.renderAll();
 	};

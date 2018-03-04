@@ -5,95 +5,164 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>School Donations for Massachusetts</title>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Ovo" rel="stylesheet">
 	<link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css') }}" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css') }}" />
-    <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/introjs.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/theme.css') }}" />
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbar">
 	<header>
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
 				<!-- Main Menu -->
-				<div class="navbar-right">
-                	<button class="btn btn-default navbar-btn" type="button" onclick="javascript:introJs().start();">Start Tour!</button>
-            	</div>
+				<div class="navbar-header">
+					<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand"><i class="fas fa-graduation-cap"></i> MA School Donations</a>
+				</div>
+				<div class="collapse navbar-collapse" id="main-menu">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#welcome">Welcome</a>
+						</li>
+						<li>
+							<a href="#charts"><i class="fas fa-chart-pie"></i> Charts</a>
+						</li>
+						<li>
+							<a href="#aim"><i class="fas fa-target"></i> Our Aim</a>
+						</li>
+						<li>
+							<a href="#how-help"><i class="fas fa-target"></i> How You Can Help</a>
+						</li>
+						<li id="reset-filter" data-toggle="tooltip" data-placement="bottom" title="Restore the charts to their default state.">
+							<a href="javascript:dc.filterAll(); dc.renderAll();"><i class="fas fa-redo"></i></a>
+						</li>
+						<li title="Need Help using the site? Click here for a guided tour." data-toggle="tooltip" data-placement="bottom" class="navbar-right">
+							<a href="javascript:void(0);" onclick="startHelpGuide();"><i class="fas fa-question-circle"></i></a>
+						</li>
+					</ul>
+				</div>
+            	
 			</div>
 		</nav>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container" id="welcome">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" >
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<section>
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Total Donations By Year
-							</div>
-							<div class="chart-stage" id="chart1">
-								<div id="line-total-donoation-by-year"></div>
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" >
-					<section>
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Number of Donors by County
-							</div>
-							<div class="chart-stage" id="chart2">
-								<div id="row-donors-by-county"></div>
-							</div>
-						</div>
+						
 					</section>
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" >
-					<section>
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Number of Projects by Focus Area
+		<section id="charts">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="step4">
+						<section>
+							<div class="chart-wrapper">
+								<div class="chart-title">
+									Total Donations By Year
+								</div>
+								<div class="chart-stage" id="chart1">
+									<div id="line-total-donoation-by-year"></div>
+								</div>
 							</div>
-							<div class="chart-stage" id="chart3">
-								<div id="row-projects-by-focus-area"></div>
+						</section>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step5">
+						<section>
+							<div class="chart-wrapper">
+								<div class="chart-title">
+									Number of Donors by County
+								</div>
+								<div class="chart-stage" id="chart2">
+									<div id="row-donors-by-county"></div>
+								</div>
 							</div>
-						</div>
-					</section>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg4">
-					<section>
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Funding Status of Projects
-							</div>
-							<div class="chart-stage" id="chart4">
-								<div id="pie-funding-status"></div>
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg4">
-					<section>
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Number of Projects by Grade
-							</div>
-							<div class="chart-stage" id="chart5">
-								
-							</div>
-						</div>
-					</section>
+						</section>
+					</div>
 				</div>
 			</div>
-		</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step6">
+						<section>
+							<div class="chart-wrapper">
+								<div class="chart-title">
+									Number of Projects by Focus Area
+								</div>
+								<div class="chart-stage" id="chart3">
+									<div id="row-projects-by-focus-area"></div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step7">
+						<section>
+							<div class="chart-wrapper">
+								<div class="chart-title">
+									Funding Status of Projects
+								</div>
+								<div class="chart-stage" id="chart4">
+									<div id="pie-funding-status"></div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step8">
+						<section>
+							<div class="chart-wrapper">
+								<div class="chart-title">
+									Number of Projects by Grade
+								</div>
+								<div class="chart-stage" id="chart5">
+									<div id="row-projects-by-grade"></div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
 	<footer>
-		
+		<div class="container footer-content">
+			<div class="row">
+				<!-- Footer Column 1 -->
+				<div class="col-xs-12 col-sm-4 col-md-3 footer-column">
+					
+				</div>
+				<!-- Footer Column 2 -->
+				<div class="col-xs-12 col-sm-2 col-md-3 footer-column">
+					
+				</div>
+				<!-- Footer Column 3 -->
+				<div class="col-xs-12 col-sm-2 col-md-3 footer-column">
+					
+				</div>
+				<!-- Footer Column 4 -->
+				<div class="col-xs-12 col-sm-4 col-md-3 footer-column">
+					
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						&copy; Justin Robinson 2018 | Data Provided by <a href="https://research.donorschoose.org/t/download-opendata/33" target="_blank" rel="nofollow">DonorsChoose.org</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</footer>
 	<script src="{{ url_for ('static', filename='lib/js/jquery.min.js') }}"></script>
     <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js') }}"></script>
@@ -103,6 +172,7 @@
     <script src="{{ url_for ('static', filename='lib/js/dc.js') }}"></script>
     <script src="{{ url_for ('static', filename='lib/js/keen.min.js') }}"></script>
     <script src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/intro.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
+    
 </body>
 </html>

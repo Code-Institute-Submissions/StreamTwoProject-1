@@ -1,3 +1,48 @@
+/* HTML Elements */
 body { 
-	padding-top: 70px; 
+	padding-top: 70px;
+	font-family: 'Ovo', serif;
+	font-size: 20px;
+	line-height: 26px;
+	position: relative;
+}
+
+/* Footer */
+footer {
+	background-color: #f6f6f6;
+	color: #777;
+	font-size: 14px;
+}
+footer a { color: #777; }
+.footer-content {
+	min-height: 200px;
+	padding-top: 90px;
+	padding-bottom: 90px;
+}
+.copyright {
+	background-color: #333;
+	padding: 20px 0;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+}
+.copyright a {
+	color: #fff;
+}
+
+/* Chart Overrides */
+.dc-chart g.row text {
+  fill: #000;
+}
+
+.dc-chart .axis text {
+	font: 10px 'Ovo', serif;
+}
+
+.chart-wrapper .chart-title {
+	font-weight: bold;
+}
+
+.y-axis-label, .x-axis-label {
+	font-size: 14px;
 }
