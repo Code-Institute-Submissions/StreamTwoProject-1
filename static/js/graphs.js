@@ -13,6 +13,14 @@ $(function () {
 })
 
 /*!
+ * function to update the CSS on DC.js select menus.
+ */
+function updateSelectCSS() {
+	// remove default style from select boxes and add bootstrap style
+	$('select').addClass("form-control").removeClass("dc-select-menu");
+}
+
+/*!
  * This function uses the data gathered from the database to build the website dashboard.
  * The data is used to produce a crossfilter enabled graph system.
  */
@@ -86,16 +94,25 @@ function buildGraphs(error, donorMAProjects) {
 		return d["grade_level"];
 	});
 
+	// poverty level dimension.
+	var povertyLevelDim = ndx.dimension(function(d) {
+		return d["poverty_level"];
+	});
+
 	// get values to set axis
 	var minYear = yearDim.bottom(1)[0]["date_posted"];
 	var maxYear = yearDim.top(1)[0]["date_posted"];
+	var minDate = dateDim.bottom(1)[0]["date_posted"];
+	var maxDate = dateDim.top(1)[0]["date_posted"];
 
 	// calculate metrics.
+	var yearGroup = yearDim.group();
 	var countyGroup = schoolCountyDim.group();
 	var focusGroup = primaryFocusDim.group();
 	var resourceGroup = resourceTypeDim.group();
 	var fundingStatusGroup = fundingStatusDim.group();
 	var gradeGroup = gradeDim.group();
+	var povertyLevelGroup = povertyLevelDim.group();
 
 	var totalDonationsByDate = dateDim.group().reduceSum(function(d) {
 		return d["total_donations"];
@@ -104,11 +121,13 @@ function buildGraphs(error, donorMAProjects) {
 		return d["num_donors"];
 	});
 
-	// define charts.
+	/*!
+	 * Define the charts and get the widths of their containers.
+	 */
 	var lineTotalDonoationYear = dc.lineChart('#line-total-donoation-by-year');
 	var rowNumDonorsCounty = dc.rowChart('#row-donors-by-county');
 	var rowProjectsByFocusArea = dc.rowChart('#row-projects-by-focus-area');
-	var pieFundingStatus = dc.pieChart('#pie-funding-status');
+	var pieResourceType = dc.pieChart('#pie-resource-type');
 	var rowProjectsByGrade = dc.rowChart("#row-projects-by-grade");
 
 	// get width of container objects to set width of graphs
@@ -117,6 +136,29 @@ function buildGraphs(error, donorMAProjects) {
 	var widthChart3 = $('#chart3').width();
 	var widthChart4 = $('#chart4').width();
 	var widthChart5 = $('#chart5').width();
+
+	/*!
+	 * Define and Build Filter Select Boxes
+	 *
+	 * Filter By Year
+	 */
+	var filterByYear = dc.selectMenu('#filter-by-year');
+	filterByYear
+		.dimension(yearDim)
+		.group(yearGroup);
+
+	// Filter by Poverty Level
+	var filterByPoverty = dc.selectMenu('#filter-by-poverty-level');
+	filterByPoverty
+		.dimension(povertyLevelDim)
+		.group(povertyLevelGroup);
+
+	// Filter by Funding Status
+	var filterByFundingStatus = dc.selectMenu('#filter-by-funding-status');
+	filterByFundingStatus
+		.dimension(fundingStatusDim)
+		.group(fundingStatusGroup);
+
 
 	/*!
 	 * Build the charts
@@ -131,7 +173,7 @@ function buildGraphs(error, donorMAProjects) {
 		.colors(d3.scale.category20c())
 		.dimension(dateDim)
 		.group(totalDonationsByDate)
-		.x(d3.time.scale().domain([minYear, maxYear]))
+		.x(d3.time.scale().domain([minDate, maxDate]))
 		.xUnits(d3.time.months)
 		.transitionDuration(500)
 		.elasticY(true)
@@ -157,6 +199,7 @@ function buildGraphs(error, donorMAProjects) {
 		.transitionDuration(500)
 		.dimension(schoolCountyDim)
 		.group(numDonorsByCounty)
+		.elasticX(true)
 		.xAxis().ticks(5);
 
 	/*!
@@ -171,20 +214,21 @@ function buildGraphs(error, donorMAProjects) {
 		.transitionDuration(500)
 		.dimension(primaryFocusDim)
 		.group(focusGroup)
+		.elasticX(true)
 		.xAxis().ticks(5);
 
 	/*!
 	 * Chart 4
 	 * Pie Chart showing the funding status of the projects
 	 */
-	pieFundingStatus
+	pieResourceType
 		.width(widthChart4)
 		.height(widthChart4)
 		.colors(d3.scale.category20c())
 		.transitionDuration(500)
 		.radius(widthChart4 - 40)
-		.dimension(fundingStatusDim)
-		.group(fundingStatusGroup);
+		.dimension(resourceTypeDim)
+		.group(resourceGroup);
 
 	/*!
 	 * Chart 5
@@ -198,12 +242,16 @@ function buildGraphs(error, donorMAProjects) {
 		.dimension(gradeDim)
 		.group(gradeGroup)
 		.transitionDuration(500)
+		.elasticX(true)
 		.xAxis().ticks(5);
 
 
 
 	// render the charts and filters
 	dc.renderAll();
+
+	// remove default style from select boxes and add bootstrap style
+	updateSelectCSS();
 
 	/*!
 	 * window onResize
@@ -227,7 +275,7 @@ function buildGraphs(error, donorMAProjects) {
 	  		.width(newWidthChart3)
 	  		.height(newWidthChart3);
 
-	  	pieFundingStatus
+	  	pieResourceType
 	  		.width(newWidthChart4)
 	  		.height(newWidthChart4)
 	  		.radius(newWidthChart4 - 40);

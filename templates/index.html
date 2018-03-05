@@ -41,7 +41,7 @@
 							<a href="#how-help"><i class="fas fa-bullhorn fa-fw"></i> How You Can Help</a>
 						</li>
 						<li id="reset-filter" data-toggle="tooltip" data-placement="bottom" title="Restore the charts to their default state.">
-							<a href="javascript:dc.filterAll(); dc.renderAll();"><i class="fas fa-redo"></i></a>
+							<a href="javascript:dc.filterAll(); dc.renderAll(); updateSelectCSS();"><i class="fas fa-redo"></i></a>
 						</li>
 						<li title="Need Help using the site? Click here for a guided tour." data-toggle="tooltip" data-placement="bottom" class="navbar-right">
 							<a href="javascript:void(0);" onclick="startHelpGuide();"><i class="fas fa-question-circle"></i></a>
@@ -72,6 +72,40 @@
 		</section>
 		
 		<section id="charts">
+			<div class="container" id="chartFilters">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="chart-wrapper">
+							<div class="chart-title">
+								Filter By Year
+							</div>
+							<div class="chart-stage">
+								<div id="filter-by-year"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="chart-wrapper">
+							<div class="chart-title">
+								Filter By Poverty Level
+							</div>
+							<div class="chart-stage">
+								<div id="filter-by-poverty-level"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+						<div class="chart-wrapper">
+							<div class="chart-title">
+								Filter By Funding Status
+							</div>
+							<div class="chart-stage">
+								<div id="filter-by-funding-status"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="step4">
@@ -118,10 +152,10 @@
 						<section>
 							<div class="chart-wrapper">
 								<div class="chart-title">
-									Funding Status of Projects
+									Project Resource Types
 								</div>
 								<div class="chart-stage" id="chart4">
-									<div id="pie-funding-status"></div>
+									<div id="pie-resource-type"></div>
 								</div>
 							</div>
 						</section>
