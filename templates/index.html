@@ -40,6 +40,8 @@
 						<li>
 							<a href="#how-help"><i class="fas fa-bullhorn fa-fw"></i> How You Can Help</a>
 						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
 						<li id="reset-filter" data-toggle="tooltip" data-placement="bottom" title="Restore the charts to their default state.">
 							<a href="javascript:dc.filterAll(); dc.renderAll(); updateSelectCSS();"><i class="fas fa-redo"></i></a>
 						</li>
@@ -74,35 +76,47 @@
 		<section id="charts">
 			<div class="container" id="chartFilters">
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Filter By Year
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<section>
+							<div class="chart-wrapper">
+								<header>
+									<div class="chart-title">
+										Filter By Year
+									</div>
+								</header>
+								<div class="chart-stage">
+									<div id="filter-by-year"></div>
+								</div>
 							</div>
-							<div class="chart-stage">
-								<div id="filter-by-year"></div>
-							</div>
-						</div>
+						</section>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Filter By Poverty Level
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<section>
+							<div class="chart-wrapper">
+								<header>
+									<div class="chart-title">
+										Filter By Poverty Level
+									</div>
+								</header>
+								<div class="chart-stage">
+									<div id="filter-by-poverty-level"></div>
+								</div>
 							</div>
-							<div class="chart-stage">
-								<div id="filter-by-poverty-level"></div>
-							</div>
-						</div>
+						</section>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-						<div class="chart-wrapper">
-							<div class="chart-title">
-								Filter By Funding Status
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<section>
+							<div class="chart-wrapper">
+								<header>
+									<div class="chart-title">
+										Filter By Funding Status
+									</div>
+								</header>
+								<div class="chart-stage">
+									<div id="filter-by-funding-status"></div>
+								</div>
 							</div>
-							<div class="chart-stage">
-								<div id="filter-by-funding-status"></div>
-							</div>
-						</div>
+						</section>
 					</div>
 				</div>
 			</div>
@@ -111,9 +125,11 @@
 					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" id="step4">
 						<section>
 							<div class="chart-wrapper">
-								<div class="chart-title">
-									Total Donations By Year
-								</div>
+								<header>
+									<div class="chart-title">
+										Total Donations By Year
+									</div>
+								</header>
 								<div class="chart-stage" id="chart1">
 									<div id="line-total-donoation-by-year"></div>
 								</div>
@@ -123,9 +139,11 @@
 					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step5">
 						<section>
 							<div class="chart-wrapper">
-								<div class="chart-title">
-									Number of Donors by County
-								</div>
+								<header>
+									<div class="chart-title">
+										Number of Donors by County
+									</div>
+								</header>
 								<div class="chart-stage" id="chart2">
 									<div id="row-donors-by-county"></div>
 								</div>
@@ -136,38 +154,90 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step6">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg4" id="step6">
 						<section>
 							<div class="chart-wrapper">
-								<div class="chart-title">
-									Number of Projects by Focus Area
-								</div>
+								<header>
+									<div class="chart-title">
+										Projects by Focus Area
+									</div>
+								</header>
 								<div class="chart-stage" id="chart3">
 									<div id="row-projects-by-focus-area"></div>
 								</div>
 							</div>
 						</section>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step7">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg4" id="step7">
 						<section>
 							<div class="chart-wrapper">
-								<div class="chart-title">
-									Project Resource Types
-								</div>
+								<header>
+									<div class="chart-title">
+										Project Resource Types
+									</div>
+								</header>
 								<div class="chart-stage" id="chart4">
 									<div id="pie-resource-type"></div>
 								</div>
 							</div>
 						</section>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-4 col-lg4" id="step8">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg4" id="step8">
 						<section>
 							<div class="chart-wrapper">
-								<div class="chart-title">
-									Number of Projects by Grade
-								</div>
+								<header>
+									<div class="chart-title">
+										Projects by Grade
+									</div>
+								</header>
 								<div class="chart-stage" id="chart5">
 									<div id="row-projects-by-grade"></div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2 col-md-offset-5">
+						<section>
+							<div class="chart-wrapper">
+								<header>
+									<div class="chart-title text-center">
+										Total Projects
+									</div>
+								</header>
+								<div class="chart-stage text-center">
+									<div id="total-projects"></div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+						<section>
+							<div class="chart-wrapper">
+								<header>
+									<div class="chart-title text-center">
+										Total Donors
+									</div>
+								</header>
+								<div class="chart-stage text-center">
+									<div id="total-donors"></div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						<section>
+							<div class="chart-wrapper">
+								<header>
+									<div class="chart-title text-center">
+										Total Donations
+									</div>
+								</header>
+								<div class="chart-stage text-center">
+									<div id="total-donations"></div>
 								</div>
 							</div>
 						</section>

@@ -120,6 +120,12 @@ function buildGraphs(error, donorMAProjects) {
 	var numDonorsByCounty = schoolCountyDim.group().reduceSum(function(d) {
 		return d["num_donors"];
 	});
+	var totalDonors = ndx.groupAll().reduceSum(function(d) {
+		return d["num_donors"];
+	});
+	var totalDonations = ndx.groupAll().reduceSum(function(d) {
+		return d["total_donations"];
+	});
 
 	/*!
 	 * Define the charts and get the widths of their containers.
@@ -158,6 +164,40 @@ function buildGraphs(error, donorMAProjects) {
 	filterByFundingStatus
 		.dimension(fundingStatusDim)
 		.group(fundingStatusGroup);
+
+	/*!
+	 * Define and build Number Displays.
+	 *
+	 * Total Projects Number Display
+	 */
+	var totalProjectsNumDisp = dc.numberDisplay('#total-projects');
+	totalProjectsNumDisp
+		.formatNumber(d3.format("d"))
+		.valueAccessor(function(d) {
+			return d;
+		})
+		.group(all)
+		.formatNumber(d3.format(","));
+
+	// Total number of Donors
+	var totalDonorsNumDisp = dc.numberDisplay('#total-donors');
+	totalDonorsNumDisp
+		.formatNumber(d3.format("d"))
+		.valueAccessor(function(d) {
+			return d;
+		})
+		.group(totalDonors)
+		.formatNumber(d3.format(","));
+
+	// Total Number of Donations
+	var totalDonationsNumDisp = dc.numberDisplay('#total-donations');
+	totalDonationsNumDisp
+		.formatNumber(d3.format("d"))
+		.valueAccessor(function(d) {
+			return d;
+		})
+		.group(totalDonations)
+		.formatNumber(d3.format("$,.2f"));
 
 
 	/*!
@@ -258,13 +298,15 @@ function buildGraphs(error, donorMAProjects) {
 	 * Evaluates the width of each chart container and sets the new width of each chart
 	 * when ever the browser window is resized.
 	 */
-	window.onresize = function(event) {
+	$(window).resize(function() {
+		// get the new width of each chart.
 		var newWidthChart1 = $('#chart1').width();
 		var newWidthChart2 = $('#chart2').width();
 		var newWidthChart3 = $('#chart3').width();
 		var newWidthChart4 = $('#chart4').width();
 		var newWidthChart5 = $('#chart5').width();
 		
+		// update width of charts
 		lineTotalDonoationYear
 			.width(newWidthChart1);
 	  	
@@ -284,7 +326,9 @@ function buildGraphs(error, donorMAProjects) {
 	  		.width(newWidthChart5)
 	  		.height(newWidthChart5);
 
-	  	dc.renderAll();
-	};
+	  	// update display.
+	  	dc.renderAll(); // redraw the charts.
+	  	updateSelectCSS(); // update select menu css.
+	});
 }
 
