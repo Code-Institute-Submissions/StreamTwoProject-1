@@ -22,7 +22,8 @@ Custom CSS was created to change the look and feel of the site.
 
 ## Directory Structure
 
-* static/ 			*holds all the sites static content*
+* __static/__
+*holds all the sites static content*
 	* css/ 			*holds the theme.css files*
 	* images/ 		*images used by the site*
 	* js/ 			*holds the graphs.js and help_guide.js files*
