@@ -70,6 +70,7 @@ footer a { color: #777; }
 
 .chart-wrapper .chart-title {
 	font-weight: bold;
+	text-overflow: ellipsis;
 }
 
 .y-axis-label, .x-axis-label {
@@ -85,4 +86,51 @@ footer a { color: #777; }
 	padding-top: 150px;
 	padding-bottom: 100px;
 	margin-bottom: 50px;
+}
+
+/* Show/Hide Help/Reset Buttons */
+.show-help-reset-xs {
+	display: none;
+	visibility: hidden;
+}
+.show-help-reset-sm {
+	display: inline-block;
+	visibility: visible;
+}
+
+/* Media Query for Phones */
+@media only screen and (max-width: 414px) {
+	h1 { 
+		font-size: 50px;
+	}
+
+	.header-bkg {
+		background-position: bottom center;
+		background-attachment: fixed;
+		background-size: cover;
+		padding-top: 75px;
+		padding-bottom: 50px;
+		margin-bottom: 50px;
+	}
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 767px) {
+	/* Show/Hide Reset/Help Buttons */
+	.show-help-reset-xs {
+		display: inline-block;
+		visibility: visible;
+	}
+	.show-help-reset-sm {
+		display: none;
+		visibility: hidden;
+	}
+	.help-reset-btn {
+		margin-right: 5px;
+	}
+
+	/* Footer */
+	.copyright {
+		text-align: center;
+	}
 }
