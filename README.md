@@ -8,7 +8,7 @@ For my Stream Two Project, I chose to use the supplied brief as outlined below:
 
 ## Project Functionality
 
-I chose to build a single page dashboard using Flask as the back-end. Flask is used to serve the website and to serve the data stored in a Mongo database using PyMongo. The website website uses this data to produce some charts. HTML and the Bootstrap framework provide the website with its layout and responsive design and Keen Dashboards has been used for the Charts.
+I chose to build a single page dashboard using Flask as the back-end. Flask is used to serve the website and to serve the data stored in a Mongo database using PyMongo. The website uses this data to produce some charts. HTML and the Bootstrap framework provide the website with its layout and responsive design and Keen Dashboards has been used for the Charts.
 
 The navigation bar is always visible as you scroll down the page and uses the Bootstrap ScrollSpy to highlight where you are on the page and to allow easy navigation around the site. To the right of the navigation are two buttons, one which will allow you to reset any active filters currently in place on the charts, the other will launch the Guided Tour of the website. These buttons make use of Bootstraps Tooltip feature to show a helpful message when you hover the mouse over them.
 
