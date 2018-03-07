@@ -8,15 +8,15 @@ For my Stream Two Project, I chose to use the supplied brief as outlined below:
 
 ## Project Functionality
 
-I chose to build a single page dashboard using Flask as backend, to serve the website and to collect the data stored in a MongoDB which the website will use to produce some charts. HTML and the Bootstrap framework provide the website with it's layout and responsive design and Keen Dashboards has been used for the Charts.
+I chose to build a single page dashboard using Flask as the back-end. Flask is used to serve the website and to serve the data stored in a Mongo database using PyMongo. The website website uses this data to produce some charts. HTML and the Bootstrap framework provide the website with its layout and responsive design and Keen Dashboards has been used for the Charts.
 
 The navigation bar is always visible as you scroll down the page and uses the Bootstrap ScrollSpy to highlight where you are on the page and to allow easy navigation around the site. To the right of the navigation are two buttons, one which will allow you to reset any active filters currently in place on the charts, the other will launch the Guided Tour of the website. These buttons make use of Bootstraps Tooltip feature to show a helpful message when you hover the mouse over them.
 
-The IntroJS help guide is availble from the main menu, will take you on a guided tour of each section of the website, explaining what each section and chart is about.
+The IntroJS help guide is available from the main menu, will take you on a guided tour of each section of the website, explaining what each section and chart is about.
 
 The charts are created using D3, DC, and Crossfilter to create an interactive section the user can use to play around with the data from the MongoDB. JQuery has been used to determine the width of each of the chart containers and used to set the width of the charts. A JQuery function is run every time the browser is resized, which updates the chart widths accordingly to make the charts as responsive as possible. 
 
-## Techologies Used
+## Technologies Used
 
 * HTML
 * CSS
@@ -25,7 +25,7 @@ The charts are created using D3, DC, and Crossfilter to create an interactive se
 * Fonts
 	* FontAwesome 5.0.8 - [https://fontawesome.com](https://fontawesome.com)
 	* Ovo - [https://fonts.google.com/specimen/Ovo](https://fonts.google.com/specimen/Ovo)
-* Javascript
+* JavaScript
 	* D3.js v3.5.3
 	* DC.js v2.1.9
 	* Crossfilter.js v1.3.5
