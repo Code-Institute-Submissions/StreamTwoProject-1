@@ -16,6 +16,25 @@ The IntroJS help guide is available from the main menu, will take you on a guide
 
 The charts are created using D3, DC, and Crossfilter to create an interactive section the user can use to play around with the data from the MongoDB. JQuery has been used to determine the width of each of the chart containers and used to set the width of the charts. A JQuery function is run every time the browser is resized, which updates the chart widths accordingly to make the charts as responsive as possible. 
 
+JQuery is also used to inject Bootstrap CSS to the 3 selectMenu's created using DC.
+
+Custom CSS was created to change the look and feel of the site.
+
+## Directory Structure
+
+* static/ 			*holds all the sites static content*
+	* css/ 			*holds the theme.css files*
+	* images/ 		*images used by the site*
+	* js/ 			*holds the graphs.js and help_guide.js files*
+	* lib/ 			*library files, not included*
+		* css/ 		*not included*
+		* js/ 		*not included*
+* templates/ 		*holds the Jinja2 Template files used by Flask*
+* test_code/		*holds python code used to test and format the data*
+* ma_donations.py	*Flask Application File*
+* README.md			*this file*
+* requirements.txt	*pip requirements file*
+
 ## Technologies Used
 
 * HTML
