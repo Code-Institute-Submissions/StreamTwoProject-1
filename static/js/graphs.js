@@ -285,8 +285,6 @@ function buildGraphs(error, donorMAProjects) {
 		.elasticX(true)
 		.xAxis().ticks(5);
 
-
-
 	// render the charts and filters
 	dc.renderAll();
 
@@ -331,4 +329,3 @@ function buildGraphs(error, donorMAProjects) {
 	  	updateSelectCSS(); // update select menu css.
 	});
 }
-
