@@ -1,7 +1,7 @@
 /*!
  * This function builds the help guide used by the site to describe each section
  */
-function startHelpGuide() {
+function startHelpGuide(stepNumber) {
 	
 	// declare the intro.
 	var helpGuide = introJs();
@@ -178,7 +178,12 @@ function startHelpGuide() {
 			showProgress: true
 		});
 	}
-
-	// start the guide.
-	helpGuide.start();
+	
+	if (stepNumber == 0) {
+		// start the guide.
+		helpGuide.start();
+	} else {
+		helpGuide.start().goToStep(stepNumber);
+	}
+	
 }
