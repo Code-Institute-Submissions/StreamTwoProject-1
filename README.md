@@ -23,29 +23,28 @@ Custom CSS was created to change the look and feel of the site.
 ## Directory Structure
 
 * __static/__
-*holds all the sites static content*
-	* css/ 			*holds the theme.css files*
-	* images/ 		*images used by the site*
-	* js/ 			*holds the graphs.js and help_guide.js files*
-	* lib/ 			*library files, not included*
-		* css/ 		*not included*
-		* js/ 		*not included*
-* templates/ 		*holds the Jinja2 Template files used by Flask*
-* test_code/		*holds python code used to test and format the data*
-* ma_donations.py	*Flask Application File*
-* README.md			*this file*
-* requirements.txt	*pip requirements file*
+	* __css/__
+	* __images/__
+	* __js/__
+	* __lib/__
+		* __css/__
+		* __js/__
+* __templates/__
+* __test_code/__
+* __ma_donations.py__
+* __README.md__
+* __requirements.txt__
 
 ## Technologies Used
 
-* HTML
-* CSS
+* __HTML__
+* __CSS__
 	* Bootstrap v3.3.7
 	* Keen Dashboards
-* Fonts
+* __Fonts__
 	* FontAwesome 5.0.8 - [https://fontawesome.com](https://fontawesome.com)
 	* Ovo - [https://fonts.google.com/specimen/Ovo](https://fonts.google.com/specimen/Ovo)
-* JavaScript
+* __JavaScript__
 	* D3.js v3.5.3
 	* DC.js v2.1.9
 	* Crossfilter.js v1.3.5
@@ -53,7 +52,7 @@ Custom CSS was created to change the look and feel of the site.
 	* Queue.js v1.0.7
 	* Keen.js
 	* JQuery v2.1.4
-* Python
+* __Python__
 	* Flask v0.12.2
 	* PyMongo v3.5.1
 
