@@ -6,7 +6,7 @@
 	<title>School Donations for Massachusetts</title>
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Ovo" rel="stylesheet">
-	<link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/bootstrap.min.css') }}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css') }}" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css" />
@@ -18,14 +18,13 @@
 			<div class="container">
 				<!-- Main Menu -->
 				<div class="navbar-header">
-
 					<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a id="mobile-help-guide" href="javascript:void(0);" onclick="startHelpGuide();" class="btn btn-default navbar-btn pull-right show-help-reset-xs help-reset-btn" title="Need Help using the site? Click here for a guided tour." data-toggle="tooltip" data-placement="bottom">
+					<a id="mobile-help-guide" href="javascript:void(0);" onclick="startHelpGuide(0);" class="btn btn-default navbar-btn pull-right show-help-reset-xs help-reset-btn" title="Need Help using the site? Click here for a guided tour." data-toggle="tooltip" data-placement="bottom">
 						<i class="fas fa-question-circle"></i>
 					</a>
 					<a id="mobile-reset-filter" href="javascript:dc.filterAll(); dc.renderAll(); updateSelectCSS();" class="btn btn-default navbar-btn pull-right show-help-reset-xs help-reset-btn" data-toggle="tooltip" data-placement="bottom" title="Restore the charts to their default state.">
@@ -55,7 +54,7 @@
 							<a href="javascript:dc.filterAll(); dc.renderAll(); updateSelectCSS();"><i class="fas fa-redo"></i></a>
 						</li>
 						<li title="Need Help using the site? Click here for a guided tour." data-toggle="tooltip" data-placement="bottom">
-							<a href="javascript:void(0);" onclick="startHelpGuide();"><i class="fas fa-question-circle"></i></a>
+							<a href="javascript:void(0);" onclick="startHelpGuide(0);"><i class="fas fa-question-circle"></i></a>
 						</li>
 					</ul>
 				</div>
@@ -63,7 +62,7 @@
 		</nav>
 	</header>
 	<main>
-		<section id="welcome">
+		<section>
 			<div class="container-fluid header-bkg">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -73,16 +72,45 @@
 					</div>
 				</div>
 			</div>
+		</section>
+		<section id="welcome">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						
+						<article>
+							<header>
+								<h2>
+									Brief
+									<a href="javascript:void(0);" onclick="startHelpGuide(2);" class="pull-right">
+										<i class="fas fa-question-circle"></i>
+									</a>
+								</h2>
+							</header>
+							<p>
+								As a candidate for Governor of Massachusetts, nothing is more important to me than education. According to a <a href="https://worldtop20.org/2017-world-best-education-systems-1st-quarter-report" target="_blank" rel="nofollow">World Top 20 Project</a> 2017 report, the US currently ranks 20<sup>th</sup> in the world for education. The aim of this page is to improve public awareness of the level of spending on education in our state, what I plan to do to change it, and how you can help and get involved.
+							</p>
+							<p>
+								The data presented by the various charts below is provided by <a href="https://www.donorschoose.org" target="_blank" rel="nofollow">DonorsChoose.org</a>, a charity set up to help the teachers in our public schools raise money for their classrooms. Using public donations, teachers can supply their students with books, technology or even a educational trip to a museum.
+							</p>
+							<p>
+								The data in the charts below shows the total number of projects created over a 10 year period (between 2006 to 2016), broken down in various categories. Feel free to interact with the charts and filter the data to show the information you are interested in. For example, if you live in the county of <b>Bristol</b>, you can click on Bristol on the <b>Number of Donors by County</b> chart, which will filter all the other charts to just show Bristol's data.
+							</p>
+						</article>
 					</div>
 				</div>
 			</div>
 		</section>
 		
 		<section id="charts">
+			<div class="container spacer">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<header>
+							<h2>Charts</h2>
+						</header>
+					</div>
+				</div>
+			</div>
 			<div class="container" id="chartFilters">
 				<div class="row">
 					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -254,6 +282,36 @@
 				</div>
 			</div>
 		</section>
+
+		<section id="aim">
+			<div class="container-fluid our-aim-bkg spacer">
+				<div class="row">
+					<div class="container">
+						<div class="row row-inner">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<header>
+									<h2>Our Aim</h2>
+								</header>
+								<p>
+									
+								</p>
+								<p>
+									
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="how-help">
+			<div class="container spacer">
+				<div class="row">
+					
+				</div>
+			</div>
+		</section>
 	</main>
 	<footer>
 		<div class="container footer-content">
@@ -290,14 +348,14 @@
 		</div>
 	</footer>
 	<script src="{{ url_for ('static', filename='lib/js/jquery.min.js') }}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/d3.js') }}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/queue.js') }}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/crossfilter.js') }}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/dc.js') }}"></script>
-    <script src="{{ url_for ('static', filename='lib/js/keen.min.js') }}"></script>
-    <script src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
-    <script src="{{ url_for ('static', filename='js/help_guide.js') }}"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="{{ url_for ('static', filename='lib/js/d3.js') }}"></script>
+	<script src="{{ url_for ('static', filename='lib/js/queue.js') }}"></script>
+	<script src="{{ url_for ('static', filename='lib/js/crossfilter.js') }}"></script>
+	<script src="{{ url_for ('static', filename='lib/js/dc.js') }}"></script>
+	<script src="{{ url_for ('static', filename='lib/js/keen.min.js') }}"></script>
+	<script src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
+	<script src="{{ url_for ('static', filename='js/help_guide.js') }}"></script>
 </body>
 </html>

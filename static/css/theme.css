@@ -5,10 +5,22 @@ body {
 	line-height: 26px;
 	position: relative;
 }
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 30px;
+	font-weight: bolder;
+}
+h2:after, h3:after, h4:after, h5:after, h6:after {
+	content: ' ';
+	width: 100%;
+	height: 2px;
+	border-top: 1px dotted #3d4a57;
+	position: relative;
+	bottom: -5px;
+	display: block;
+}
 h1 { 
 	font-size: 80px; 
 	text-align: center;
-	font-weight: bolder;
 	color: #fff;
 	text-shadow: 2px 2px 2px #000;
 }
@@ -23,6 +35,12 @@ a {
 	-o-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 	text-decoration: none;
+}
+p {
+	margin-bottom: 30px;
+}
+p:last-child {
+	margin: 0 0 0 0;
 }
 
 /* Nav bar */
@@ -58,6 +76,9 @@ footer a { color: #777; }
 .copyright a {
 	color: #fff;
 }
+.copyright ul {
+	margin-bottom: 0;
+}
 
 /* Chart Overrides */
 .dc-chart g.row text {
@@ -69,7 +90,7 @@ footer a { color: #777; }
 }
 
 .chart-wrapper .chart-title {
-	font-weight: bold;
+	font-weight: bolder;
 	text-overflow: ellipsis;
 }
 
@@ -83,9 +104,23 @@ footer a { color: #777; }
 	background-position: bottom center;
 	background-attachment: fixed;
 	background-size: cover;
+	background-repeat: no-repeat;
 	padding-top: 150px;
 	padding-bottom: 100px;
-	margin-bottom: 50px;
+	margin-bottom: 75px;
+}
+.our-aim-bkg {
+	background-image: url(/static/images/our-aim-bkg.jpg);
+	background-position: top center;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	padding-top: 75px;
+	padding-bottom: 75px;
+}
+
+/* Row Spacer */
+.spacer {
+	margin-top: 75px;
 }
 
 /* Show/Hide Help/Reset Buttons */
@@ -132,5 +167,11 @@ footer a { color: #777; }
 	/* Footer */
 	.copyright {
 		text-align: center;
+	}
+
+	/* Extra Margins on an inner row */
+	.row-inner { 
+		margin-right: 15px; 
+		margin-left: 15px;
 	}
 }
