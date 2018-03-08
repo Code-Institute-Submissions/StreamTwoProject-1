@@ -20,6 +20,8 @@ JQuery is also used to inject Bootstrap CSS to the 3 selectMenu's created using 
 
 Custom CSS was created to change the look and feel of the site.
 
+[http://js-socials.com](jsSocials) was used to generate the sharing links used page.
+
 ## Directory Structure
 
 * __static/__
@@ -52,6 +54,7 @@ Custom CSS was created to change the look and feel of the site.
 	* Queue.js v1.0.7
 	* Keen.js
 	* JQuery v2.1.4
+	* jsSocials v1.4.0 [http://js-socials.com](http://js-socials.com)
 * __Python__
 	* Flask v0.12.2
 	* PyMongo v3.5.1

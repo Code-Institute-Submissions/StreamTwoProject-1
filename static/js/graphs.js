@@ -6,11 +6,49 @@ queue()
 	.await(buildGraphs);
 
 /*!
- * initialise bootstrap tooltips
+ * initialise bootstrap tooltips and social share icons.
  */
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+	// bootstrap tooltips
+ 	$('[data-toggle="tooltip"]').tooltip();
+
+ 	$("#share").jsSocials({
+		showCount: false,
+		showLabel: true,
+		shares: [
+			"email",
+			{
+				share: "twitter",
+				logo: "fab fa-twitter"
+			},
+			{
+				share: "facebook",
+				logo: "fab fa-facebook-f"
+			},
+			{
+				share: "googleplus",
+				logo: "fab fa-google-plus-g"
+			},
+			{
+				share: "linkedin",
+				logo: "fab fa-linkedin-in"
+			},
+			{
+				share: "pinterest", 
+				label: "Pin this",
+				logo: "fab fa-pinterest-p"
+			},
+			{
+				share: "stumbleupon",
+				logo: "fab fa-stumbleupon"
+			},
+			{
+				share: "whatsapp",
+				logo: "fab fa-whatsapp"
+			}
+		]
+	});
+});
 
 /*!
  * function to update the CSS on DC.js select menus.

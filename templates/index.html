@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/keen-dashboards.css') }}" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='lib/css/dc.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
     <link rel="stylesheet" href="{{ url_for ('static', filename='css/theme.css') }}" />
 </head>
 <body data-spy="scroll" data-target="#navbar" data-offset="50">
@@ -48,6 +50,9 @@
 						<li>
 							<a href="#how-help"><i class="fas fa-bullhorn fa-fw"></i> How You Can Help</a>
 						</li>
+						<li>
+							<a href="#contact"><i class="fas fa-envelope fa-fw"></i> Contact</a>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right show-help-reset-xs show-help-reset-sm">
 						<li id="reset-filter" data-toggle="tooltip" data-placement="bottom" title="Restore the charts to their default state.">
@@ -62,18 +67,22 @@
 		</nav>
 	</header>
 	<main>
-		<section>
+		<section id="welcome">
 			<div class="container-fluid header-bkg">
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<header>
-							<h1>School Donations for the State of Massachusetts</h1>
-						</header>
+					<div class="container">
+						<div class="row row-inner">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<header>
+									<h1>School Donations for the State of Massachusetts</h1>
+								</header>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section id="welcome">
+		<section id="brief">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -106,7 +115,12 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<header>
-							<h2>Charts</h2>
+							<h2>
+								Charts
+								<a href="javascript:void(0);" onclick="startHelpGuide(3);" class="pull-right">
+									<i class="fas fa-question-circle"></i>
+								</a>
+							</h2>
 						</header>
 					</div>
 				</div>
@@ -290,14 +304,53 @@
 						<div class="row row-inner">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 								<header>
-									<h2>Our Aim</h2>
+									<h2>
+										Our Aim
+										<a href="javascript:void(0);" onclick="startHelpGuide(12);" class="pull-right">
+											<i class="fas fa-question-circle"></i>
+										</a>
+									</h2>
 								</header>
 								<p>
-									
+									As you can see from the data, there are several areas that are in need of attention. Firstly, the vast majority of all projects are being created in Suffolk county, for example, in 2015 alone they had 1,654 projects and raised over $1.2m for their schools. Where as in Hampshire, in 2015, they had only 8 projects and raised just over $6,100.
 								</p>
 								<p>
-									
+									My first goal would be to increase awareness of <a href="https://www.donorschoose.org" target="_blank" rel="nofollow">DonorsChoose.org</a> in the other counties, by visiting our schools and encouraging the teachers and school officials to list projects they would like to run to improve their lessons and the children's education. 
 								</p>
+								<p>
+									Secondly, as the Project Resource Types chart shows, the vast majority of Project requests are for Supplies or Technology. Schools shouldn't have to beg for the supplies they need to their job. Therefore, I shall push to supply more funding to our schools so they can buy the supplies needed and focus their funding raising efforts on more fun and beneficial projects, such as school trips or arrange guest speakers to visit classes. 
+								</p>
+								<p>
+									Lastly, I shall push for more funding to go towards projects focusing on Health and Sports, and Music and The Arts to encourage kids to be creative and active.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container spacer">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<div class="thumbnail">
+							<img src="{{ url_for ('static', filename='images/happy-kids-learning.jpg') }}" alt="Kids Happily Learning" class="img-responsive">
+							<div class="caption">
+								Keep Kids Happy in School by making sure they have the supplies they need.
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<div class="thumbnail">
+							<img src="{{ url_for ('static', filename='images/computer-creative-happy.jpg') }}" alt="Introduce Kids to new technologies" class="img-responsive">
+							<div class="caption">
+								Introduce Kids to new technologies and encourage creative.
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+						<div class="thumbnail">
+							<img src="{{ url_for ('static', filename='images/help-students-succeed.jpg') }}" alt="Help Students achieve the success the deserve" class="img-responsive">
+							<div class="caption">
+								Help Students achieve the success the deserve in life.
 							</div>
 						</div>
 					</div>
@@ -308,54 +361,83 @@
 		<section id="how-help">
 			<div class="container spacer">
 				<div class="row">
-					
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<header>
+							<h2>
+								How You Can Help
+								<a href="javascript:void(0);" onclick="startHelpGuide(13);" class="pull-right">
+									<i class="fas fa-question-circle"></i>
+								</a>
+							</h2>
+						</header>
+						<p>
+							You may be asking, "What can I do to help?". Here are a few ways I believe the community at large can help with education funding:
+						</p>
+						<ol class="help-list">
+							<li>
+								<h4>Talk with Teachers</h4>
+								Go and see your kids school and chat to their teachers, suggest they make some projects on <a href="https://www.donorschoose.org" target="_blank" rel="nofollow">DonorsChoose.org</a>.
+							</li>
+							<li>
+								<h4>Donate</h4>
+								Search the projects on <a href="https://www.donorschoose.org" target="_blank" rel="nofollow">DonorsChoose.org</a> that are running in your area and donate to ones that interest you or will benefit your kids or community the most. Even if you can only donate $1, every little help and if everyone contributes a small amount, it quickly adds up.
+							</li>
+							<li>
+								<h4>Spread the Word</h4>
+								Tell your friends and family about projects running in your area. Spread the word about any projects that are currently running on social media, or share this page to help increase peoples awareness, some links are provided below to make sharing this page easier.
+								<div id="share"></div>
+							</li>
+						</ol>
+					</div>
 				</div>
 			</div>
 		</section>
 	</main>
-	<footer>
-		<div class="container footer-content">
+	<footer id="contact">
+		<div class="container-fluid spacer chalkboard-bkg">
 			<div class="row">
-				<!-- Footer Column 1 -->
-				<div class="col-xs-12 col-sm-4 col-md-3 footer-column">
-					
-				</div>
-				<!-- Footer Column 2 -->
-				<div class="col-xs-12 col-sm-2 col-md-3 footer-column">
-					
-				</div>
-				<!-- Footer Column 3 -->
-				<div class="col-xs-12 col-sm-2 col-md-3 footer-column">
-					
-				</div>
-				<!-- Footer Column 4 -->
-				<div class="col-xs-12 col-sm-4 col-md-3 footer-column">
-					
-				</div>
-			</div>
-		</div>
-		<div class="container-fluid copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<ul class="list-inline">
-							<li>&copy; Justin Robinson 2018</li>
-							<li>Data Provided by <a href="https://research.donorschoose.org/t/download-opendata/33" target="_blank" rel="nofollow">DonorsChoose.org</a></li>
-						</ul>
+				<div class="container">
+					<div class="row row-inner">
+						<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+							<article>
+								<header>
+									<h2>Get in Touch</h2>
+								</header>
+							</article>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+							<article>
+								<header>
+									<h2>Contact Form</h2>
+								</header>
+							</article>
+						</div>
+					</div>
+					<div class="row row-inner">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 copyright">
+							<ul class="list-inline">
+								<li>&copy; Justin Robinson 2018</li>
+								<li>Data Provided by <a href="https://research.donorschoose.org/t/download-opendata/33" target="_blank" rel="nofollow">DonorsChoose.org</a></li>
+								<li>Pictures from <a href="https://pxhere.com/en/">PxHere.com</a>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
+
 	<script src="{{ url_for ('static', filename='lib/js/jquery.min.js') }}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
 	<script src="{{ url_for ('static', filename='lib/js/d3.js') }}"></script>
 	<script src="{{ url_for ('static', filename='lib/js/queue.js') }}"></script>
 	<script src="{{ url_for ('static', filename='lib/js/crossfilter.js') }}"></script>
 	<script src="{{ url_for ('static', filename='lib/js/dc.js') }}"></script>
 	<script src="{{ url_for ('static', filename='lib/js/keen.min.js') }}"></script>
-	<script src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
+	<script src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
 	<script src="{{ url_for ('static', filename='js/help_guide.js') }}"></script>
+
 </body>
 </html>
