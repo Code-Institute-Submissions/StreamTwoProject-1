@@ -301,6 +301,18 @@ function buildGraphs(error, donorMAProjects) {
 		var newWidthChart4 = $('#chart4').width();
 		var newWidthChart5 = $('#chart5').width();
 		
+		// set transitionDuration to 0 during resize.
+		lineTotalDonoationYear
+			.transitionDuration(0);
+		rowProjectsByCounty
+			.transitionDuration(0);
+		rowProjectsByFocusArea
+			.transitionDuration(0);
+		pieResourceType
+			.transitionDuration(0);
+		rowProjectsByGrade
+			.transitionDuration(0);
+
 		// update width of charts
 		lineTotalDonoationYear
 			.width(newWidthChart1);
@@ -324,5 +336,17 @@ function buildGraphs(error, donorMAProjects) {
 	  	// update display.
 	  	dc.renderAll(); // redraw the charts.
 	  	updateSelectCSS(); // update select menu css.
+
+	  	// reset transitionDuration.
+		lineTotalDonoationYear
+			.transitionDuration(500);
+		rowProjectsByCounty
+			.transitionDuration(500);
+		rowProjectsByFocusArea
+			.transitionDuration(500);
+		pieResourceType
+			.transitionDuration(500);
+		rowProjectsByGrade
+			.transitionDuration(500);
 	});
 }
