@@ -61,7 +61,7 @@ function startHelpGuide(stepNumber) {
 				// step 7
 				{
 					element: '#step5',
-					intro: "<h3>Donors By County</h3>This chart shows the <b>number of donors per county</b>, you can click on any of the bars to show data from that county on the other charts. You can select as many bars as you like.",
+					intro: "<h3>Projects By County</h3>This chart shows the <b>number of projects per county</b>, you can click on any of the bars to show data from that county on the other charts. You can select as many bars as you like.",
 					position: 'left'
 				},
 
@@ -178,7 +178,7 @@ function startHelpGuide(stepNumber) {
 			showProgress: true
 		});
 	}
-	
+
 	if (stepNumber == 0) {
 		// start the guide.
 		helpGuide.start();

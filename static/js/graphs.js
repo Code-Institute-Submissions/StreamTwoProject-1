@@ -117,9 +117,6 @@ function buildGraphs(error, donorMAProjects) {
 	var totalDonationsByDate = dateDim.group().reduceSum(function(d) {
 		return d["total_donations"];
 	});
-	var numDonorsByCounty = schoolCountyDim.group().reduceSum(function(d) {
-		return d["num_donors"];
-	});
 	var totalDonors = ndx.groupAll().reduceSum(function(d) {
 		return d["num_donors"];
 	});
@@ -131,7 +128,7 @@ function buildGraphs(error, donorMAProjects) {
 	 * Define the charts and get the widths of their containers.
 	 */
 	var lineTotalDonoationYear = dc.lineChart('#line-total-donoation-by-year');
-	var rowNumDonorsCounty = dc.rowChart('#row-donors-by-county');
+	var rowProjectsByCounty = dc.rowChart('#row-projects-by-county');
 	var rowProjectsByFocusArea = dc.rowChart('#row-projects-by-focus-area');
 	var pieResourceType = dc.pieChart('#pie-resource-type');
 	var rowProjectsByGrade = dc.rowChart("#row-projects-by-grade");
@@ -229,16 +226,16 @@ function buildGraphs(error, donorMAProjects) {
 	
 	/*!
 	 * Chart 2
-	 * Row Chart showing the number of donors by shcool county
+	 * Row Chart showing the number of projects by shcool county
 	 */
-	rowNumDonorsCounty
+	rowProjectsByCounty
 		.width(widthChart2)
 		.height(500)
 		.margins({top: 20, right: 20, bottom: 20, left: 20})
 		.colors(d3.scale.category20c())
 		.transitionDuration(500)
 		.dimension(schoolCountyDim)
-		.group(numDonorsByCounty)
+		.group(countyGroup)
 		.elasticX(true)
 		.xAxis().ticks(5);
 
@@ -308,7 +305,7 @@ function buildGraphs(error, donorMAProjects) {
 		lineTotalDonoationYear
 			.width(newWidthChart1);
 	  	
-	  	rowNumDonorsCounty
+	  	rowProjectsByCounty
 	  		.width(newWidthChart2);
 
 	  	rowProjectsByFocusArea
