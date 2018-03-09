@@ -410,6 +410,7 @@
 								<header>
 									<h2>Contact Form</h2>
 								</header>
+								{% include "contact_form.html" %}
 							</article>
 						</div>
 					</div>
@@ -438,6 +439,67 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.js"></script>
 	<script src="{{ url_for ('static', filename='js/graphs.js') }}"></script>
 	<script src="{{ url_for ('static', filename='js/help_guide.js') }}"></script>
+	<script>
+		$(document).ready(function() {
+			$('form').submit(function (e) {
+				var url = "{{ url_for('submitForm') }}"; // send the form data here.
+				$.ajax({
+					type: "POST",
+					url: url,
+					data: $('form').serialize(), // serializes the form's elements.
+					beforeSend: function() {
+						$('#submitContactForm').prop('disabled', true);
+						$('#status').addClass('hidden').text('');
+						$('.help-block').text('');
+						$('.form-group').removeClass('has-error');
+					},
+					success: function (data) {
+						$('#status')
+							.addClass('alert alert-warning')
+							.removeClass('hidden')
+							.html('<i class="fas fa-spinner fa-pulse"></i> Your Message is being sent.');
 
+						setTimeout(function() {
+							$('#status')
+								.addClass('alert-success')
+								.removeClass('alert-warning')
+								.html('<i class="fas fa-check"></i> Your Message sent successfully');
+							$('#submitContactForm').prop('disabled', false);
+							console.log(data)  // display the returned data in the console.
+						}, 6000);
+					},
+					error: function(data) {
+						// get error messages.
+						var errors = data.responseJSON.data;
+						
+						// loop through errors and highlight fields.
+						for (var key in errors) {
+							// create names of labels and form control
+							var _label = '#' + key + '-status';
+							var _control = '#' + key;
+
+							// check 
+							$(_control).parent().addClass('has-error');
+							if (errors.hasOwnProperty(key)) {
+								$(_label).text(errors[key]);
+							}
+						}
+
+						$('#submitContactForm').prop('disabled', false);
+					}
+				});
+				e.preventDefault(); // block the traditional submission of the form.
+			});
+
+			// Inject our CSRF token into our AJAX request.
+			$.ajaxSetup({
+				beforeSend: function(xhr, settings) {
+					if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+						xhr.setRequestHeader("X-CSRFToken", "{{ form.csrf_token._value() }}")
+					}
+				}
+			})
+		});
+	</script>
 </body>
 </html>

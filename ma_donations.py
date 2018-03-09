@@ -1,12 +1,15 @@
 # import libraries to create Flask website
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from pymongo import MongoClient
 import json
 import os
 
+from forms import ContactForm
+
 
 # declare the app
 app = Flask(__name__)
+app.secret_key = 'jk90mBYzM9Gwr1AbX82n6c069FUiju'
 
 # declare constant variables
 MONGO_URI = 'mongodb://localhost:27017/'  # local host mongoDB
@@ -22,7 +25,8 @@ def index():
 	This is the home page of the website
 	:return:
 	"""
-	return render_template("index.html")
+	form = ContactForm()
+	return render_template("index.html", form=form)
 
 
 
@@ -67,6 +71,19 @@ def get_donor_data():
 
 		# convert the projects to a JSON object and return the data
 		return json.dumps(list(projects))
+
+
+# app route for submitting the contact form.
+@app.route('/submit', methods=['post'])
+def submitForm():
+	# get the form.
+	form = ContactForm();
+
+	# check if form is valid.
+	if form.validate():
+		return jsonify(data=form.data)
+	else:
+		return jsonify(data=form.errors), 300
 
 
 # check if app name is __main__ and run app if it is.

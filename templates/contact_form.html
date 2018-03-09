@@ -1,0 +1,33 @@
+<form id="contactForm">
+	{{ form.csrf_token }}
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="form-group">
+				{{ form.fullName.label(class="control-label") }}
+				{{ form.fullName(class="form-control") }}
+				<div id="fullName-status" class="help-block"></div>
+			</div>
+			
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="form-group">
+				{{ form.emailAddress.label(class="control-label") }}
+				{{ form.emailAddress(class="form-control") }}
+				<div id="emailAddress-status" class="help-block"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="form-group">
+				{{ form.yourMessage.label(class="control-label") }}
+				{{ form.yourMessage(class="form-control", rows="5") }}
+				<div id="yourMessage-status" class="help-block"></div>
+			</div>
+			<div id="status"></div>
+			<div class="form-group form-spacer">
+				<input id="submitContactForm" type="submit" value="Send Enquiry" class="btn btn-default center-block">
+			</div>
+		</div>
+	</div>
+</form>

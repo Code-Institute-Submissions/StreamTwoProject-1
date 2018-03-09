@@ -20,22 +20,9 @@ JQuery is also used to inject Bootstrap CSS to the 3 selectMenu's created using 
 
 Custom CSS was created to change the look and feel of the site.
 
-[http://js-socials.com](jsSocials) was used to generate the sharing links used page.
+[jsSocials](http://js-socials.com) was used to generate the sharing links used page.
 
-## Directory Structure
-
-* __static/__
-	* __css/__
-	* __images/__
-	* __js/__
-	* __lib/__
-		* __css/__
-		* __js/__
-* __templates/__
-* __test_code/__
-* __ma_donations.py__
-* __README.md__
-* __requirements.txt__
+The contact form at in the footer uses Flask-WTF forms and a JQuery Ajax to handle submission, all form validation is handled by the server, any validation errors are returned in a JSON object, looped through and JQuery is used to display the errors to the user. The form doesn't send any e-mails, but uses a setTimeout() function to simulate the effect.
 
 ## Technologies Used
 
@@ -57,6 +44,8 @@ Custom CSS was created to change the look and feel of the site.
 	* jsSocials v1.4.0 [http://js-socials.com](http://js-socials.com)
 * __Python__
 	* Flask v0.12.2
+	* WTForms v2.1
+	* Flask-WTF v0.14.2
 	* PyMongo v3.5.1
 
 ## Testing
