@@ -22,15 +22,15 @@ function startHelpGuide(stepNumber) {
 
 		// step 2
 		{
-			element: '#welcome',
-			intro: "<h3>Welcome</h3>This is the opening of the website",
+			element: '#brief',
+			intro: "<h3>Welcome</h3>This section introduces you to the website and what it hopes to accomplish.",
 			position: 'bottom'
 		},
 
 		// step 3
 		{
 			element: '#charts',
-			intro: "<h3>Charts</h3>This section of the website contains various charts, showing the donations made to various eductaion projects between 2007 and 2016. All the charts in this section are <b>interactive</b>."
+			intro: "<h3>Charts</h3>This section of the website contains various charts, showing the donations made to various education projects between 2007 and 2016. All the charts in this section are <b>interactive</b>."
 		},
 
 		// step 4
@@ -103,7 +103,7 @@ function startHelpGuide(stepNumber) {
 		// step 11
 		{
 			element: '#totalRow',
-			intro: '<h3>Totals</h3>This section shows the total number of projects, total number of donoations made, and the total amount raised in $. These numbers will update automatically to reflect changes made by the charts.',
+			intro: '<h3>Totals</h3>This section shows the total number of projects, total number of donations made, and the total amount raised in $. These numbers will update automatically to reflect changes made by the charts.',
 			position: 'bottom'
 		},
 
