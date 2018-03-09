@@ -111,6 +111,24 @@ function startHelpGuide(stepNumber) {
 		{
 			element: '#aim',
 			intro: '<h3>Our Aim</h3>This section of the site conveys what I intend to do about the education funding in the state.'
+		},
+
+		// step 13
+		{
+			element: '#how-to-help',
+			intro: '<h3>How You Can Help</h3>This section of the site gives some suggestions on how you can help raise awareness of this website and it\'s aim.'
+		},
+
+		// step 14
+		{
+			element: '#contact-details',
+			intro: '<h3>Contact Details</h3>This section can be used to get in contact with us. You can click on the email and telephone links or write to the address.'
+		},
+
+		// step 15
+		{
+			element: '#contact-form',
+			intro: '<h3>Contact Form</h3>You can use this form to get in contact with us, just fill in the form and press the \'Send Enquiry\' button. All the fields on the form are required.'
 		}
 	]);
 

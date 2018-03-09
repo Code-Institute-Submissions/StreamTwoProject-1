@@ -112,6 +112,31 @@ p:last-child {
 	transition: 0.3s ease-in all;
 }
 
+/* IntroJS Footer Overrides */
+#contact .introjs-showElement .form-group {
+	color: #1f1e20;
+}
+#contact .introjs-showElement .form-control {
+	background-color: transparent;
+	color: #1f1e20;
+	padding: 10px;
+	font-size: 18px;
+	line-height: 26px;
+	height: initial;
+	border: 2px dotted #1f1e20;
+}
+
+#contact .introjs-showElement .btn-default {
+	border: 2px dotted #1f1e20;
+	color: #1f1e20;
+}
+#contact .introjs-showElement, #contact .introjs-showElement a {
+	color: #1f1e20;
+}
+#contact .introjs-showElement h2:after {
+	border-top: 1px dotted #1f1e20;
+}
+
 /* Footer */
 footer {
 	color: #f3e8e5;
