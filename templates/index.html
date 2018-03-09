@@ -403,6 +403,22 @@
 								<header>
 									<h2>Get in Touch</h2>
 								</header>
+								<p>
+									We'd love to hear from you with any questions or suggestions you may have. Here's how you can reach us.
+								</p>
+								<ul class="fa-ul">
+									<li>
+										<span class="fa-li"><i class="fas fa-fw fa-envelope"></i></span><a href="mailto:enquiries@example.com">enquiries@example.com</a>
+									</li>
+									<li>
+										<span class="fa-li"><i class="fas fa-fw fa-mobile-alt"></i></span><a href="tel:0123456789">012 345 6789</a>
+									</li>
+									<li><span class="fa-li"><i class="fas fa-fw fa-building"></i></span>Address Line 1<br />
+										Address Line 2<br />
+										Massachusetts<br />
+										12345 
+									</li>
+								</ul>
 							</article>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -442,53 +458,67 @@
 	<script>
 		$(document).ready(function() {
 			$('form').submit(function (e) {
-				var url = "{{ url_for('submitForm') }}"; // send the form data here.
+				var url = "{{ url_for('submitForm') }}"; // url for form submission.
 				$.ajax({
-					type: "POST",
+					type: "POST", 
 					url: url,
 					data: $('form').serialize(), // serializes the form's elements.
+					// before sending, disable submit button and clear any existing error messages.
 					beforeSend: function() {
-						$('#submitContactForm').prop('disabled', true);
-						$('#status').addClass('hidden').text('');
-						$('.help-block').text('');
-						$('.form-group').removeClass('has-error');
+						$('#submitContactForm').prop('disabled', true); // disable the submit button.
+						$('#status').addClass('hidden').text(''); // hide the status box.
+						$('.help-block').text(''); // clear all help blocks of text.
+						$('.form-group').removeClass('has-error'); // remove error styles.
 					},
+
+					// if form is valid, display status message, then after 6 seconds, display confirmation.
 					success: function (data) {
+						// display message being sent status.
 						$('#status')
 							.addClass('alert alert-warning')
 							.removeClass('hidden')
 							.html('<i class="fas fa-spinner fa-pulse"></i> Your Message is being sent.');
 
+						// set a 6 second delay, then show success message.
 						setTimeout(function() {
 							$('#status')
 								.addClass('alert-success')
 								.removeClass('alert-warning')
 								.html('<i class="fas fa-check"></i> Your Message sent successfully');
+							
+							// enable submit button.
 							$('#submitContactForm').prop('disabled', false);
-							console.log(data)  // display the returned data in the console.
 						}, 6000);
 					},
+
+					// display any validation errors.
 					error: function(data) {
 						// get error messages.
 						var errors = data.responseJSON.data;
 						
 						// loop through errors and highlight fields.
 						for (var key in errors) {
-							// create names of labels and form control
-							var _label = '#' + key + '-status';
-							var _control = '#' + key;
+							// create names of labels and form control.
+							var _label = '#' + key + '-status'; // error message.
+							var _control = '#' + key; // form control.
 
-							// check 
+							// add error class to form controls parent.
 							$(_control).parent().addClass('has-error');
+
+							// check if error message has a property, and display.
 							if (errors.hasOwnProperty(key)) {
+								// display error message.
 								$(_label).text(errors[key]);
 							}
 						}
 
+						// enable the submit button.
 						$('#submitContactForm').prop('disabled', false);
 					}
 				});
-				e.preventDefault(); // block the traditional submission of the form.
+
+				// block the traditional submission of the form.
+				e.preventDefault();
 			});
 
 			// Inject our CSRF token into our AJAX request.

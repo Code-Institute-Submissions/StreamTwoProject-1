@@ -22,7 +22,7 @@ Custom CSS was created to change the look and feel of the site.
 
 [jsSocials](http://js-socials.com) was used to generate the sharing links used page.
 
-The contact form at in the footer uses Flask-WTF forms and a JQuery Ajax to handle submission, all form validation is handled by the server, any validation errors are returned in a JSON object, looped through and JQuery is used to display the errors to the user. The form doesn't send any e-mails, but uses a setTimeout() function to simulate the effect.
+The contact form in the footer uses Flask-WTF to produce the form and a JQuery Ajax function to handle form submission, all form validation is handled by the server, any validation errors are returned in a JSON object, looped through and JQuery is used to display the errors to the user. The form doesn't send any e-mails, but uses a setTimeout() function to simulate the effect.
 
 ## Technologies Used
 
