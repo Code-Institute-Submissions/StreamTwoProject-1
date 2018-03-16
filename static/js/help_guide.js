@@ -115,7 +115,7 @@ function startHelpGuide(stepNumber) {
 
 		// step 13
 		{
-			element: '#how-to-help',
+			element: '#how-help',
 			intro: '<h3>How You Can Help</h3>This section of the site gives some suggestions on how you can help raise awareness of this website and it\'s aim.'
 		},
 
