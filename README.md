@@ -14,7 +14,9 @@ The navigation bar is always visible as you scroll down the page and uses the Bo
 
 The IntroJS help guide is available from the main menu, will take you on a guided tour of each section of the website, explaining what each section and chart is about.
 
-The charts are created using D3, DC, and Crossfilter to create an interactive section the user can use to play around with the data from the MongoDB. JQuery has been used to determine the width of each of the chart containers and used to set the width of the charts. A JQuery function is run every time the browser is resized, which updates the chart widths accordingly to make the charts as responsive as possible. 
+The charts are created using D3, DC, and Crossfilter to create an interactive section the user can use to play around with the data from the MongoDB. JQuery has been used to determine the width of each of the chart containers and used to set the width of the charts. A JQuery function is run every time the browser is resized, which updates the chart widths accordingly to make the charts as responsive as possible.
+
+The data used to generate the charts was obtained from [DonorsChoose.org Data](https://research.donorschoose.org/t/download-opendata/33) and was formatted into a CSV file using the supplied Pandas code, and filtered to extract only the MA state records. The code used to format the data is included in the _test_code_ folder, titled _format_data.py_.
 
 JQuery is also used to inject Bootstrap CSS to the 3 selectMenu's created using DC.
 
@@ -60,7 +62,9 @@ This branch contains the full copy of the website (including any external code f
 
 ## Testing
 
+The website has been tested repeatedly during development on both desktop and mobile devices as well as using the "Responsive Mode" of Safari to test different screen resolutions and browser types to ensure the site looks the same and is as responsive as possible.
 
+Test code was created to test database connections, and that the data had been imported correctly and is included in the _test_code_ folder.
 
 ## Deployment
 
