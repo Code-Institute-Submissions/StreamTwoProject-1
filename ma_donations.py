@@ -12,9 +12,9 @@ app = Flask(__name__)
 app.secret_key = 'jk90mBYzM9Gwr1AbX82n6c069FUiju'
 
 # declare constant variables
-MONGO_URI = 'mongodb://localhost:27017/'  # local host mongoDB
-DB_NAME = 'donorsMA'
-COLLECTION_NAME = 'projects'
+MONGO_URI = 'mongodb://ds035693.mlab.com:35693/'  # local host mongoDB
+DB_NAME = 'heroku_850245lg'
+COLLECTION_NAME = 'ma_projects'
 
 
 # start the app
