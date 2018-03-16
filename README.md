@@ -24,6 +24,16 @@ Custom CSS was created to change the look and feel of the site.
 
 The contact form in the footer uses Flask-WTF to produce the form and a JQuery Ajax function to handle form submission, all form validation is handled by the server, any validation errors are returned in a JSON object, looped through and JQuery is used to display the errors to the user. The form doesn't send any e-mails, but uses a setTimeout() function to simulate the effect.
 
+## Git Branches
+
+### master
+
+This branch contains all the code which I have written myself as well as any images and test_code files used to create the project.
+
+### heroku-deploy
+
+This branch contains the full copy of the website (including any external code files) that the site needs to run and is linked to the Heroku app for automatic deployment.
+
 ## Technologies Used
 
 * __HTML__
@@ -53,3 +63,5 @@ The contact form in the footer uses Flask-WTF to produce the form and a JQuery A
 
 
 ## Deployment
+
+The project has been deployed to Heroku at the following address: [https://rocky-tor-55350.herokuapp.com](https://rocky-tor-55350.herokuapp.com). This app shows the latest deployment from the "heroku-deploy" branch.
